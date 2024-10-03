@@ -17,16 +17,15 @@ class App extends Component {
       status: false,
       sexo: 1,
       sexos: [
-        {key: 1, sexo: "Masculino"},
-        {key: 2, sexo: "Feminino"},
-        {key: 3, sexo: "Não informar"},
+        { key: 1, sexo: "Masculino" },
+        { key: 2, sexo: "Feminino" },
+        { key: 3, sexo: "Não informar" },
       ],
       nome: "",
       input: "",
       valor: 0,
     };
     this.entrar = this.entrar.bind(this);
-
   }
 
   entrar() {
@@ -34,20 +33,19 @@ class App extends Component {
       alert("Digite seu nome.");
       return;
     }
+
     this.setState({
-      nome: "Conta Criada com sucesso! Bem vindo " + this.state.input +".",
+      nome: "Conta Criada com sucesso, bem vindo " + this.state.input + ".",
     });
-    alert(
-      "Conta Criada Com Sucesso!"
-    );
+    alert(`Conta Criada Com Sucesso. \n\nNome: ${this.state.input}
+      \nValor Limite: ${this.state.valor}`);
   }
 
   render() {
-
     let sexoEscolhido = this.state.sexos.map((v) => {
       return <Picker.Item key={v.key} label={v.sexo} value={v.key} />;
     });
-    
+
     return (
       <View style={styles.container}>
         <TextInput
@@ -72,7 +70,7 @@ class App extends Component {
         </Text>
         <Slider
           minimunValue={0}
-          maximumValue={100}
+          maximumValue={10000}
           onValueChange={(valorSelecionado) =>
             this.setState({ valor: valorSelecionado })
           }
